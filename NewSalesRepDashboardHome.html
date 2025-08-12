@@ -1,0 +1,975 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <div class="flex items-center mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                <div>
+                    <div class="font-medium">John Smith</div>
+                    <div class="text-gray-400 text-sm">Sales Representative</div>
+                </div>
+            </div>
+            <button class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-800">Dashboard</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Tabs -->
+            <div class="px-6 border-b border-gray-200">
+                <div class="flex">
+                    <a href="NewSalesRepDashboardHome.html" class="py-3 px-4 border-b-2 border-primary text-primary font-medium">
+                        Overview
+                    </a>
+                    <a href="NewReferralActivityTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Referral Activity
+                    </a>
+                    <a href="NewCommunitiesTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Communities
+                    </a>
+                    <a href="NewInviteLinkGeneratorTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Invite &amp; Link Generator
+                    </a>
+                    <a href="NewPostBasedLinksTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Post-Base Links
+                    </a>
+                    <a href="NewEarningsCommissionsTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Earnings &amp; Commissions
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Tabs -->
+        <div class="md:hidden px-4 py-2 bg-white border-b overflow-x-auto whitespace-nowrap">
+            <div class="flex">
+                <button class="py-2 px-3 border-b-2 border-primary text-primary font-medium text-sm">
+                    Overview
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Referrals
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Communities
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Invite
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Earnings
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <main id="dashboard-content" class="p-4 md:p-6">
+            <!-- Overview Tab Content -->
+            <div id="overview-tab" class="mb-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div id="total-earnings-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Earnings</p>
+                                <h3 class="text-2xl font-bold mt-1">$4,385.00</h3>
+                                <p class="text-green-500 text-sm mt-1 flex items-center">
+                                    <i class="fa-solid fa-arrow-up mr-1"></i> 12% from last month
+                                </p>
+                            </div>
+                            <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-dollar-sign text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="active-posts-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Active Posts</p>
+                                <h3 class="text-2xl font-bold mt-1">23</h3>
+                                <p class="text-green-500 text-sm mt-1 flex items-center">
+                                    <i class="fa-solid fa-arrow-up mr-1"></i> 5 new this week
+                                </p>
+                            </div>
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="active-communities-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Active Communities</p>
+                                <h3 class="text-2xl font-bold mt-1">7</h3>
+                                <p class="text-gray-500 text-sm mt-1 flex items-center">
+                                    <i class="fa-solid fa-users mr-1"></i> 142 total members
+                                </p>
+                            </div>
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-users text-purple-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="pending-referrals-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Pending Referrals</p>
+                                <h3 class="text-2xl font-bold mt-1">12</h3>
+                                <p class="text-orange-500 text-sm mt-1 flex items-center">
+                                    <i class="fa-solid fa-clock mr-1"></i> 3 expiring soon
+                                </p>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-user-plus text-orange-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions and Notifications -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Chart -->
+                    <div id="earnings-chart" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100 lg:col-span-2">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-gray-800">Earnings Overview</h3>
+                            <select class="text-sm border border-gray-300 rounded p-1">
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                                <option>This year</option>
+                            </select>
+                        </div>
+                        <div id="earnings-chart-container" class="h-64"></div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div id="notifications-panel" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-gray-800">Recent Notifications</h3>
+                            <button class="text-sm text-primary">View All</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start p-3 bg-red-50 rounded-md">
+                                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fa-solid fa-exclamation-circle text-red-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">Link expired</p>
+                                    <p class="text-xs text-gray-500">Your referral link for "Summer Campaign" has expired.</p>
+                                    <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-3 bg-green-50 rounded-md">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fa-solid fa-check-circle text-green-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">New ad created</p>
+                                    <p class="text-xs text-gray-500">Emily Johnson created a new ad via your invite.</p>
+                                    <p class="text-xs text-gray-400 mt-1">Yesterday</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-3 bg-blue-50 rounded-md">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fa-solid fa-info-circle text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">Community update</p>
+                                    <p class="text-xs text-gray-500">Admin reassigned "Tech Enthusiasts" community to you.</p>
+                                    <p class="text-xs text-gray-400 mt-1">2 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post Performance Summary Widget -->
+                <div id="post-performance-summary" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-800">Post Performance Summary</h3>
+                        <button class="text-sm text-primary">View Details</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Posts Created -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-file-lines text-blue-500 text-xl"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-800">47</div>
+                            <div class="text-sm text-gray-500">Total Posts Created</div>
+                            <div class="text-xs text-green-500 mt-1">+8 this month</div>
+                        </div>
+                        
+                        <!-- Traffic from Posts -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-mouse-pointer text-primary text-xl"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-800">12,547</div>
+                            <div class="text-sm text-gray-500">Referral Link Clicks</div>
+                            <div class="text-xs text-green-500 mt-1">+15.3% this week</div>
+                        </div>
+                        
+                        <!-- Top Performing Post -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-trophy text-green-500 text-xl"></i>
+                            </div>
+                            <div class="text-lg font-semibold text-gray-800 truncate">Top 10 Tech Gadgets</div>
+                            <div class="text-sm text-gray-500">Best Performer</div>
+                            <div class="text-xs text-primary mt-1 cursor-pointer hover:underline">2,376 clicks</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Traffic Chart -->
+                    <div class="mt-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-medium text-gray-700">Traffic from Posts (Last 7 days)</h4>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-3 h-3 bg-primary rounded-full mr-2"></div>
+                                Daily Clicks
+                            </div>
+                        </div>
+                        <div id="traffic-chart" class="h-32"></div>
+                    </div>
+                </div>
+                
+                <!-- Potential Earnings Section -->
+                <div id="potential-earnings" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center">
+                            <h3 class="font-semibold text-gray-800 mr-2">Potential Earnings Calculator</h3>
+                            <div class="relative group">
+                                <i class="fa-solid fa-info-circle text-gray-400 cursor-help"></i>
+                                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                                    Formula: Posts × Conversion Rate × Avg Commission
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">Global Rate: 12%</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        <!-- Total Posts -->
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-file-lines text-blue-500 text-sm"></i>
+                                </div>
+                                <span class="text-2xl font-bold text-blue-600">47</span>
+                            </div>
+                            <div class="text-sm font-medium text-gray-700">Total Posts</div>
+                        </div>
+                        
+                        <!-- Conversion Rate -->
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-percentage text-purple-500 text-sm"></i>
+                                </div>
+                                <span class="text-2xl font-bold text-purple-600">12%</span>
+                            </div>
+                            <div class="text-sm font-medium text-gray-700">Conversion Rate</div>
+                        </div>
+                        
+                        <!-- Avg Commission -->
+                        <div class="bg-green-50 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-coins text-green-500 text-sm"></i>
+                                </div>
+                                <span class="text-2xl font-bold text-green-600">$85</span>
+                            </div>
+                            <div class="text-sm font-medium text-gray-700">Avg Commission</div>
+                        </div>
+                        
+                        <!-- Potential Earnings -->
+                        <div class="bg-primary bg-opacity-10 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="w-8 h-8 bg-primary bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-calculator text-primary text-sm"></i>
+                                </div>
+                                <span class="text-2xl font-bold text-primary">$479</span>
+                            </div>
+                            <div class="text-sm font-medium text-gray-700">Potential Earnings</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Actual vs Expected Conversions -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-medium text-gray-700">Conversion Performance</h4>
+                            <div class="text-sm text-gray-500">Expected: 5.6 | Actual: 8</div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Expected Conversions -->
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-600">Expected Conversions</span>
+                                    <span class="text-lg font-bold text-orange-600">5.6</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-orange-500 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">Based on 12% rate</div>
+                            </div>
+                            
+                            <!-- Actual Conversions -->
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-600">Actual Conversions</span>
+                                    <span class="text-lg font-bold text-green-600">8</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                                <div class="text-xs text-green-600 mt-1">+43% above expected</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Performance Summary -->
+                        <div class="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-chart-line text-green-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-green-800">Performance Status: Exceeding Expectations</span>
+                                </div>
+                                <div class="text-sm font-semibold text-green-600">+$204 bonus earnings</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div id="recent-activity" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-800">Recent Activity</h3>
+                        <div class="flex">
+                            <button class="text-sm border border-gray-300 rounded-l px-3 py-1 bg-gray-100">Posts</button>
+                            <button class="text-sm border-t border-b border-r border-gray-300 rounded-r px-3 py-1">Communities</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3">Post Title</th>
+                                    <th class="px-4 py-3">Status</th>
+                                    <th class="px-4 py-3">Date</th>
+                                    <th class="px-4 py-3">Views</th>
+                                    <th class="px-4 py-3">Earnings</th>
+                                    <th class="px-4 py-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Summer Fashion Trends 2023</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 15, 2023</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">1,245</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$125.40</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-primary hover:underline">View</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Top 10 Tech Gadgets of 2023</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 10, 2023</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">2,376</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$237.60</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-primary hover:underline">View</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Home Decor Ideas for Small Spaces</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full px-2 py-1">Pending</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 5, 2023</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">897</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$89.70</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-primary hover:underline">View</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communities Tab Content (to be added after overview tab) -->
+            <div id="communities-tab" class="mb-6 hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800">My Communities</h2>
+                    <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary transition">
+                        <i class="fa-solid fa-plus mr-2"></i>Create Community
+                    </button>
+                </div>
+                
+                <!-- Communities Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-blue-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1 cursor-pointer hover:text-primary">Tech Enthusiasts</h3>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fa-solid fa-map-marker-alt mr-1"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span>45 members</span>
+                            <span>$150 commission</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Last activity: 2 hours ago</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-purple-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1 cursor-pointer hover:text-primary">Fashion Forward</h3>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fa-solid fa-map-marker-alt mr-1"></i>
+                            <span>New York, NY</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span>32 members</span>
+                            <span>$120 commission</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Last activity: 1 day ago</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-green-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-medium bg-blue-100 text-blue-800 rounded-full px-2 py-1">Private</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1 cursor-pointer hover:text-primary">Home &amp; Garden Club</h3>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fa-solid fa-map-marker-alt mr-1"></i>
+                            <span>Austin, TX</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span>28 members</span>
+                            <span>$95 commission</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Last activity: 3 days ago</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-orange-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1 cursor-pointer hover:text-primary">Fitness Fanatics</h3>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fa-solid fa-map-marker-alt mr-1"></i>
+                            <span>Los Angeles, CA</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span>67 members</span>
+                            <span>$200 commission</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Last activity: 5 hours ago</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-red-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full px-2 py-1">Pending</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1 cursor-pointer hover:text-primary">Travel Lovers</h3>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fa-solid fa-map-marker-alt mr-1"></i>
+                            <span>Miami, FL</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span>19 members</span>
+                            <span>$75 commission</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Last activity: 1 week ago</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-indigo-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-1 cursor-pointer hover:text-primary">Business Network</h3>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fa-solid fa-map-marker-alt mr-1"></i>
+                            <span>Chicago, IL</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span>89 members</span>
+                            <span>$275 commission</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Last activity: 30 minutes ago</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Action Button (Mobile) -->
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 md:hidden">
+            <button class="w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Create Post Modal (Hidden by default) -->
+    <div id="create-post-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-lg mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800">Create New Post</h2>
+                    <button id="close-post-modal" class="text-gray-500">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Post Title</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter post title">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                        <select class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Fashion</option>
+                            <option>Technology</option>
+                            <option>Home &amp; Garden</option>
+                            <option>Health &amp; Fitness</option>
+                            <option>Travel</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-24" placeholder="Enter post description"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Upload Image</label>
+                        <div class="border border-dashed border-gray-300 rounded-md p-4 text-center">
+                            <i class="fa-solid fa-cloud-upload-alt text-gray-400 text-2xl mb-2"></i>
+                            <p class="text-sm text-gray-500">Drag and drop or click to upload</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2">Cancel</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-md">Create Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.getElementById('mobile-menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+        
+        // Create earnings chart
+        Highcharts.chart('earnings-chart-container', {
+            chart: {
+                type: 'areaspline',
+                style: {
+                    fontFamily: 'Inter, sans-serif'
+                }
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: ['Jun 1', 'Jun 8', 'Jun 15', 'Jun 22', 'Jun 29', 'Jul 6', 'Jul 13', 'Jul 20'],
+                labels: {
+                    style: {
+                        color: '#6B7280',
+                        fontSize: '10px'
+                    }
+                },
+                lineColor: '#E5E7EB',
+                tickColor: '#E5E7EB'
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                gridLineColor: '#E5E7EB',
+                labels: {
+                    style: {
+                        color: '#6B7280',
+                        fontSize: '10px'
+                    }
+                }
+            },
+            legend: {
+                enabled: true,
+                itemStyle: {
+                    color: '#6B7280',
+                    fontWeight: 'normal',
+                    fontSize: '12px'
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.1,
+                    marker: {
+                        radius: 4,
+                        lineWidth: 2,
+                        lineColor: null
+                    }
+                }
+            },
+            series: [{
+                name: 'Referral Earnings',
+                color: '#4F46E5',
+                data: [120, 150, 180, 220, 280, 310, 350, 390]
+            }, {
+                name: 'Community Earnings',
+                color: '#6366F1',
+                data: [80, 100, 130, 160, 190, 210, 230, 250]
+            }]
+        });
+
+        // Create traffic from posts chart
+        Highcharts.chart('traffic-chart', {
+            chart: {
+                type: 'column',
+                height: 120,
+                style: {
+                    fontFamily: 'Inter, sans-serif'
+                }
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                labels: {
+                    style: {
+                        color: '#6B7280',
+                        fontSize: '10px'
+                    }
+                },
+                lineColor: 'transparent',
+                tickLength: 0
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                gridLineColor: '#E5E7EB',
+                labels: {
+                    style: {
+                        color: '#6B7280',
+                        fontSize: '10px'
+                    }
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                column: {
+                    borderRadius: 3,
+                    pointPadding: 0.3,
+                    groupPadding: 0.1
+                }
+            },
+            series: [{
+                name: 'Clicks',
+                color: '#4F46E5',
+                data: [1420, 1680, 1950, 2100, 2376, 1890, 1650]
+            }]
+        });
+    </script>
+
+</body></html>
