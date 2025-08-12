@@ -1,0 +1,1125 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <div class="flex items-center mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                <div>
+                    <div class="font-medium">John Smith</div>
+                    <div class="text-gray-400 text-sm">Sales Representative</div>
+                </div>
+            </div>
+            <button class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-800">Earnings &amp; Commissions</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Tabs -->
+            <div class="px-6 border-b border-gray-200">
+                <div class="flex">
+                    <a href="NewSalesRepDashboardHome.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Overview
+                    </a>
+                    <a href="NewReferralActivityTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Referral Activity
+                    </a>
+                    <a href="NewCommunitiesTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Communities
+                    </a>
+                    <a href="NewInviteLinkGeneratorTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Invite &amp; Link Generator
+                    </a>
+                    <a href="NewPostBasedLinksTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Post-Base Links
+                    </a>
+                    <a href="NewEarningsCommissionsTab.html" class="py-3 px-4 border-b-2 border-primary text-primary font-medium">
+                        Earnings &amp; Commissions
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Tabs -->
+        <div class="md:hidden px-4 py-2 bg-white border-b overflow-x-auto whitespace-nowrap">
+            <div class="flex">
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Overview
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Referrals
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Communities
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Invite
+                </button>
+                <button class="py-2 px-3 border-b-2 border-primary text-primary font-medium text-sm">
+                    Earnings
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <main id="earnings-content" class="p-4 md:p-6">
+            <!-- Date Filter and Download Options -->
+            <div id="earnings-filters" class="bg-white rounded-lg shadow-sm p-4 mb-6 border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                                <option>This year</option>
+                                <option>Custom range</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="fa-solid fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Communities</option>
+                                <option>Tech Enthusiasts</option>
+                                <option>Fashion Forward</option>
+                                <option>Home Decor</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="fa-solid fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="download-csv" class="flex items-center bg-white border border-gray-300 rounded-md px-3 py-1.5 text-sm hover:bg-gray-50">
+                            <i class="fa-solid fa-file-csv mr-2 text-gray-500"></i>
+                            CSV
+                        </button>
+                        <button id="download-pdf" class="flex items-center bg-white border border-gray-300 rounded-md px-3 py-1.5 text-sm hover:bg-gray-50">
+                            <i class="fa-solid fa-file-pdf mr-2 text-gray-500"></i>
+                            PDF
+                        </button>
+                        <button id="download-excel" class="flex items-center bg-white border border-gray-300 rounded-md px-3 py-1.5 text-sm hover:bg-gray-50">
+                            <i class="fa-solid fa-file-excel mr-2 text-gray-500"></i>
+                            Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Earnings Summary Cards -->
+            <div id="earnings-summary" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div id="total-earnings-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Earnings</p>
+                            <h3 class="text-2xl font-bold mt-1">$4,385.00</h3>
+                            <p class="text-green-500 text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-arrow-up mr-1"></i> 12% from last month
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-dollar-sign text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="referral-earnings-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Referral Earnings</p>
+                            <h3 class="text-2xl font-bold mt-1">$2,865.50</h3>
+                            <p class="text-green-500 text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-arrow-up mr-1"></i> 8% from last month
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-user-plus text-blue-500"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="community-earnings-card" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Community Earnings</p>
+                            <h3 class="text-2xl font-bold mt-1">$1,519.50</h3>
+                            <p class="text-green-500 text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-arrow-up mr-1"></i> 15% from last month
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-users text-purple-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Earnings Chart -->
+            <div id="earnings-chart-section" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100 mb-6">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                    <h3 class="font-semibold text-gray-800 mb-2 md:mb-0">Monthly Earnings Breakdown</h3>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
+                            <span class="text-sm text-gray-600">Referral Earnings</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
+                            <span class="text-sm text-gray-600">Community Earnings</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="monthly-earnings-chart" class="h-72"></div>
+            </div>
+            
+            <!-- Earnings Breakdown Tabs -->
+            <div id="earnings-breakdown" class="bg-white rounded-lg shadow-sm border border-gray-100 mb-6">
+                <div class="border-b border-gray-200">
+                    <div class="flex">
+                        <button id="tab-referrals" class="py-3 px-4 border-b-2 border-primary text-primary font-medium">
+                            Referral Earnings
+                        </button>
+                        <button id="tab-communities" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                            Community Earnings
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Referral Earnings Table -->
+                <div id="referral-earnings-table" class="p-5">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-3">
+                        <div class="flex gap-2">
+                            <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Status</option>
+                                <option>Paid</option>
+                                <option>Pending</option>
+                                <option>Processing</option>
+                            </select>
+                            <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Time Periods</option>
+                                <option>This Month</option>
+                                <option>Last Month</option>
+                                <option>Last 3 Months</option>
+                            </select>
+                            <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Referral Types</option>
+                                <option>Show Only Post-based Referrals</option>
+                                <option>Show Only Direct Referrals</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            Sort by: 
+                            <select class="ml-2 border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>Total Earnings (High to Low)</option>
+                                <option>Total Earnings (Low to High)</option>
+                                <option>Date (Newest First)</option>
+                                <option>Date (Oldest First)</option>
+                                <option>Referrals Count</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Potential Earnings Alert -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-info-circle text-blue-500 mr-2"></i>
+                            <div>
+                                <div class="text-sm font-medium text-blue-800">Potential Earnings from Unconverted Posts</div>
+                                <div class="text-xs text-blue-600 mt-1">You could earn an additional <span class="font-semibold">$2,450</span> if all pending referrals convert</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Post Title <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Referral Source <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Post Reference <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Referrals <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Time Period <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Commission Rate <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Total Earnings <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Summer Fashion Trends 2023</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                            <span class="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Post-based Referral</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <i class="fa-solid fa-link text-blue-500 mr-2"></i>
+                                            <span class="text-sm font-medium text-blue-600 hover:underline cursor-pointer">Post #SF-2023-156</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">42</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 15 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">30 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">12%</td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm font-medium text-gray-800">$845</div>
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            <i class="fa-solid fa-link mr-1"></i>
+                                            from Post: "Summer Fashion Trends 2023"
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Paid</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Top 10 Tech Gadgets of 2023</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                            <span class="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Post-based Referral</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <i class="fa-solid fa-link text-blue-500 mr-2"></i>
+                                            <span class="text-sm font-medium text-blue-600 hover:underline cursor-pointer">Post #TG-2023-089</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">78</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 1 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">45 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">15%</td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm font-medium text-gray-800">$1,250</div>
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            <i class="fa-solid fa-link mr-1"></i>
+                                            from Post: "Top 10 Tech Gadgets of 2023"
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Paid</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-gray-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-user-plus text-gray-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Direct Community Invite</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                                            <span class="text-xs font-medium text-blue-700 bg-blue-100 px-2 py-1 rounded">Direct Referral</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <i class="fa-solid fa-users text-gray-400 mr-2"></i>
+                                            <span class="text-sm text-gray-500">N/A - Direct Invite</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">15</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jul 1 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">15 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">8%</td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm font-medium text-gray-800">$185</div>
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            <i class="fa-solid fa-users mr-1"></i>
+                                            from Community: "Tech Enthusiasts"
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Paid</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Home Decor Ideas for Small Spaces</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                            <span class="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Post-based Referral</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <i class="fa-solid fa-link text-blue-500 mr-2"></i>
+                                            <span class="text-sm font-medium text-blue-600 hover:underline cursor-pointer">Post #HD-2023-042</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm text-gray-500">36 converted</div>
+                                        <div class="text-xs text-orange-600">+24 pending</div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 20 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">25 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">10%</td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm font-medium text-gray-800">$584</div>
+                                        <div class="text-xs text-orange-600 mt-1">
+                                            <i class="fa-solid fa-clock mr-1"></i>
+                                            +$240 potential from pending
+                                        </div>
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            <i class="fa-solid fa-link mr-1"></i>
+                                            from Post: "Home Decor Ideas for Small Spaces"
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-file-lines text-blue-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800">Best Fitness Equipment 2023</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                            <span class="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Post-based Referral</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <i class="fa-solid fa-link text-blue-500 mr-2"></i>
+                                            <span class="text-sm font-medium text-blue-600 hover:underline cursor-pointer">Post #FE-2023-078</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm text-gray-500">24 converted</div>
+                                        <div class="text-xs text-orange-600">+18 pending</div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jul 1 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">15 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">8%</td>
+                                    <td class="px-4 py-3">
+                                        <div class="text-sm font-medium text-gray-800">$190</div>
+                                        <div class="text-xs text-orange-600 mt-1">
+                                            <i class="fa-solid fa-clock mr-1"></i>
+                                            +$180 potential from pending
+                                        </div>
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            <i class="fa-solid fa-link mr-1"></i>
+                                            from Post: "Best Fitness Equipment 2023"
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Community Earnings Table (Hidden by default) -->
+                <div id="community-earnings-table" class="p-5 hidden">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-3">
+                        <div class="flex gap-2">
+                            <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Communities</option>
+                                <option>Tech Enthusiasts</option>
+                                <option>Fashion Forward</option>
+                                <option>Home Decor</option>
+                                <option>Fitness Fanatics</option>
+                            </select>
+                            <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Status</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            Sort by: 
+                            <select class="ml-2 border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>Total Earnings (High to Low)</option>
+                                <option>Total Earnings (Low to High)</option>
+                                <option>Members Count</option>
+                                <option>Commission Rate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Community Name <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Members <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Time Period <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Commission Rate <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3 cursor-pointer hover:text-gray-700">
+                                        Total Earnings <i class="fa-solid fa-sort ml-1"></i>
+                                    </th>
+                                    <th class="px-4 py-3">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-users text-purple-500"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-800">Tech Enthusiasts</div>
+                                                <div class="text-xs text-gray-500">Created: Mar 15, 2023</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">56</div>
+                                            <div class="text-xs text-gray-400">+12 this month</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 1 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">30 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">5%</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$685</td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Paid</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-users text-purple-500"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-800">Fashion Forward</div>
+                                                <div class="text-xs text-gray-500">Created: Mar 15, 2023</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">42</div>
+                                            <div class="text-xs text-gray-400">+12 this month</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 1 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">30 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">5%</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$412</td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Paid</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-users text-purple-500"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-800">Home Decor</div>
+                                                <div class="text-xs text-gray-500">Created: Mar 15, 2023</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">28</div>
+                                            <div class="text-xs text-gray-400">+12 this month</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 1 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">30 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">4%</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$245</td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center mr-3">
+                                                <i class="fa-solid fa-users text-purple-500"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-800">Fitness Fanatics</div>
+                                                <div class="text-xs text-gray-500">Created: Mar 15, 2023</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">16</div>
+                                            <div class="text-xs text-gray-400">+12 this month</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">
+                                        <div>
+                                            <div class="font-medium">Jun 15 - Jul 15, 2023</div>
+                                            <div class="text-xs text-gray-400">30 days active</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">4%</td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-800">$175</td>
+                                    <td class="px-4 py-3">
+                                        <span class="text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment History -->
+            <div id="payment-history" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-semibold text-gray-800">Payment History</h3>
+                    <button class="text-sm text-primary">View All</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th class="px-4 py-3">Payment ID</th>
+                                <th class="px-4 py-3">Date</th>
+                                <th class="px-4 py-3">Amount</th>
+                                <th class="px-4 py-3">Payment Method</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3">Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-gray-500">#PAY-2023-0845</td>
+                                <td class="px-4 py-3 text-sm text-gray-500">Jul 15, 2023</td>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-800">$1,245.30</td>
+                                <td class="px-4 py-3 text-sm text-gray-500">Direct Deposit</td>
+                                <td class="px-4 py-3">
+                                    <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Completed</span>
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    <button class="text-primary hover:underline flex items-center">
+                                        <i class="fa-solid fa-download mr-1"></i> Download
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-gray-500">#PAY-2023-0789</td>
+                                <td class="px-4 py-3 text-sm text-gray-500">Jun 15, 2023</td>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-800">$978.60</td>
+                                <td class="px-4 py-3 text-sm text-gray-500">Direct Deposit</td>
+                                <td class="px-4 py-3">
+                                    <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Completed</span>
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    <button class="text-primary hover:underline flex items-center">
+                                        <i class="fa-solid fa-download mr-1"></i> Download
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm text-gray-500">#PAY-2023-0732</td>
+                                <td class="px-4 py-3 text-sm text-gray-500">May 15, 2023</td>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-800">$845.20</td>
+                                <td class="px-4 py-3 text-sm text-gray-500">Direct Deposit</td>
+                                <td class="px-4 py-3">
+                                    <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Completed</span>
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    <button class="text-primary hover:underline flex items-center">
+                                        <i class="fa-solid fa-download mr-1"></i> Download
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Action Button (Mobile) -->
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 md:hidden">
+            <button class="w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white">
+                <i class="fa-solid fa-download"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Download Report Modal (Hidden by default) -->
+    <div id="download-report-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800">Download Report</h2>
+                    <button id="close-download-modal" class="text-gray-500">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Report Type</label>
+                        <select class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Earnings Summary</option>
+                            <option>Referral Earnings</option>
+                            <option>Community Earnings</option>
+                            <option>Payment History</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+                        <select class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Last 30 days</option>
+                            <option>Last 90 days</option>
+                            <option>This year</option>
+                            <option>Custom range</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">File Format</label>
+                        <div class="flex gap-3">
+                            <div class="flex items-center">
+                                <input type="radio" id="format-csv" name="file-format" class="mr-2" checked="">
+                                <label for="format-csv" class="text-sm text-gray-700">CSV</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="format-pdf" name="file-format" class="mr-2">
+                                <label for="format-pdf" class="text-sm text-gray-700">PDF</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="format-excel" name="file-format" class="mr-2">
+                                <label for="format-excel" class="text-sm text-gray-700">Excel</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2">Cancel</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-md">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.getElementById('mobile-menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+        
+        // Tab switching
+        document.getElementById('tab-referrals').addEventListener('click', function() {
+            document.getElementById('tab-referrals').classList.add('border-primary', 'text-primary');
+            document.getElementById('tab-communities').classList.remove('border-primary', 'text-primary');
+            document.getElementById('tab-communities').classList.add('text-gray-500');
+            document.getElementById('referral-earnings-table').classList.remove('hidden');
+            document.getElementById('community-earnings-table').classList.add('hidden');
+        });
+        
+        document.getElementById('tab-communities').addEventListener('click', function() {
+            document.getElementById('tab-communities').classList.add('border-primary', 'text-primary', 'border-b-2');
+            document.getElementById('tab-referrals').classList.remove('border-primary', 'text-primary');
+            document.getElementById('tab-referrals').classList.add('text-gray-500');
+            document.getElementById('community-earnings-table').classList.remove('hidden');
+            document.getElementById('referral-earnings-table').classList.add('hidden');
+        });
+        
+        // Download buttons
+        const downloadButtons = ['download-csv', 'download-pdf', 'download-excel'];
+        downloadButtons.forEach(id => {
+            document.getElementById(id).addEventListener('click', function() {
+                document.getElementById('download-report-modal').classList.remove('hidden');
+            });
+        });
+        
+        document.getElementById('close-download-modal').addEventListener('click', function() {
+            document.getElementById('download-report-modal').classList.add('hidden');
+        });
+        
+        // Create monthly earnings chart
+        Highcharts.chart('monthly-earnings-chart', {
+            chart: {
+                type: 'column',
+                style: {
+                    fontFamily: 'Inter, sans-serif'
+                }
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                labels: {
+                    style: {
+                        color: '#6B7280',
+                        fontSize: '10px'
+                    }
+                },
+                lineColor: '#E5E7EB',
+                tickColor: '#E5E7EB'
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                gridLineColor: '#E5E7EB',
+                labels: {
+                    style: {
+                        color: '#6B7280',
+                        fontSize: '10px'
+                    },
+                    formatter: function() {
+                        return '$' + this.value;
+                    }
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    borderRadius: 3,
+                    pointPadding: 0.2,
+                    groupPadding: 0.1
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>' + this.series.name + '</b><br/>' + 
+                           this.x + ': $' + this.y;
+                }
+            },
+            series: [{
+                name: 'Referral Earnings',
+                color: '#4F46E5',
+                data: [780, 920, 1100, 1350, 1680, 2240, 2865]
+            }, {
+                name: 'Community Earnings',
+                color: '#6366F1',
+                data: [450, 520, 680, 790, 950, 1280, 1520]
+            }]
+        });
+    </script>
+
+</body></html>

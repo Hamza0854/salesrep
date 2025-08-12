@@ -1,0 +1,455 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <div class="flex items-center mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                <div>
+                    <div class="font-medium">John Smith</div>
+                    <div class="text-gray-400 text-sm">Sales Representative</div>
+                </div>
+            </div>
+            <button class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-800">Post-Based Links</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Tabs -->
+            <div class="px-6 border-b border-gray-200">
+                <div class="flex">
+                    <a href="NewSalesRepDashboardHome.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Overview
+                    </a>
+                    <a href="NewReferralActivityTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Referral Activity
+                    </a>
+                    <a href="NewCommunitiesTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Communities
+                    </a>
+                    <a href="NewInviteLinkGeneratorTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Invite &amp; Link Generator
+                    </a>
+                    <a href="NewPostBasedLinksTab.html" class="py-3 px-4 border-b-2 border-primary text-primary font-medium">
+                        Post-Base Links
+                    </a>
+                    <a href="NewEarningsCommissionsTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Earnings &amp; Commissions
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Tabs -->
+        <div class="md:hidden px-4 py-2 bg-white border-b overflow-x-auto whitespace-nowrap">
+            <div class="flex">
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Overview
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Referrals
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Communities
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Invite
+                </button>
+                <button class="py-2 px-3 border-b-2 border-primary text-primary font-medium text-sm">
+                    Posts
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Earnings
+                </button>
+            </div>
+        </div>
+
+        <!-- Post-Based Links Content -->
+        <main id="post-based-links-content" class="p-4 md:p-6">
+            <!-- Header Section -->
+            <div id="post-links-header" class="mb-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <div>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Post-Based Referral Links</h2>
+                        <p class="text-gray-600">Automatically generated referral links for your posts</p>
+                    </div>
+                    <div class="flex items-center mt-4 md:mt-0">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-3">
+                            <i class="fa-solid fa-link mr-1"></i>
+                            8 Active Links
+                        </span>
+                        <button class="bg-primary text-white px-4 py-2 rounded-lg font-medium flex items-center hover:bg-primary-dark transition">
+                            <i class="fa-solid fa-plus mr-2"></i>
+                            Create New Post
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div id="post-links-filters" class="flex flex-wrap gap-3 mb-6">
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium">
+                        All Links
+                    </button>
+                    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition">
+                        Active
+                    </button>
+                    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition">
+                        Expired
+                    </button>
+                    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition">
+                        High Conversions
+                    </button>
+                    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition">
+                        Recently Generated
+                    </button>
+                </div>
+            </div>
+
+            <!-- Post Links List -->
+            <div id="post-links-list" class="space-y-4">
+                <!-- Post Link Item 1 -->
+                <div id="post-link-1" class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
+                    <div class="flex flex-col lg:flex-row justify-between items-start">
+                        <div class="flex-grow mb-4 lg:mb-0">
+                            <div class="flex items-center mb-3">
+                                <h3 class="text-lg font-semibold text-gray-800 mr-3">Premium Marketing Course - Limited Time Offer</h3>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+                                    <i class="fa-solid fa-sparkles mr-1"></i>
+                                    Recently Generated
+                                </span>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 mb-3 flex items-center">
+                                <input type="text" value="https://postersz.com/r/premium-marketing-abc123" class="bg-transparent flex-grow text-sm text-gray-700 outline-none" readonly="">
+                                <button class="text-primary ml-2">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-mouse-pointer mr-1"></i>
+                                    <span>247 clicks</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-chart-line mr-1"></i>
+                                    <span>12 conversions</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-calendar mr-1"></i>
+                                    <span>Expires: Jan 15, 2024</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 ml-0 lg:ml-4">
+                            <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm flex items-center">
+                                <i class="fa-solid fa-eye mr-1"></i>
+                                View Post
+                            </button>
+                            <button class="bg-primary hover:bg-primary-dark text-white px-3 py-2 rounded-lg text-sm flex items-center">
+                                <i class="fa-solid fa-share mr-1"></i>
+                                Share
+                            </button>
+                            <button class="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-2 rounded-lg text-sm">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Link Item 2 -->
+                <div id="post-link-2" class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
+                    <div class="flex flex-col lg:flex-row justify-between items-start">
+                        <div class="flex-grow mb-4 lg:mb-0">
+                            <div class="flex items-center mb-3">
+                                <h3 class="text-lg font-semibold text-gray-800 mr-3">Social Media Management Tools Comparison</h3>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 mb-3 flex items-center">
+                                <input type="text" value="https://postersz.com/r/social-media-tools-xyz789" class="bg-transparent flex-grow text-sm text-gray-700 outline-none" readonly="">
+                                <button class="text-primary ml-2">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-mouse-pointer mr-1"></i>
+                                    <span>189 clicks</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-chart-line mr-1"></i>
+                                    <span>8 conversions</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-calendar mr-1"></i>
+                                    <span>Expires: Jan 20, 2024</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 ml-0 lg:ml-4">
+                            <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm flex items-center">
+                                <i class="fa-solid fa-eye mr-1"></i>
+                                View Post
+                            </button>
+                            <button class="bg-primary hover:bg-primary-dark text-white px-3 py-2 rounded-lg text-sm flex items-center">
+                                <i class="fa-solid fa-share mr-1"></i>
+                                Share
+                            </button>
+                            <button class="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-2 rounded-lg text-sm">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Link Item 3 -->
+                <div id="post-link-3" class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
+                    <div class="flex flex-col lg:flex-row justify-between items-start">
+                        <div class="flex-grow mb-4 lg:mb-0">
+                            <div class="flex items-center mb-3">
+                                <h3 class="text-lg font-semibold text-gray-800 mr-3">E-commerce Growth Strategies 2024</h3>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 mb-3 flex items-center">
+                                <input type="text" value="https://postersz.com/r/ecommerce-growth-def456" class="bg-transparent flex-grow text-sm text-gray-700 outline-none" readonly="">
+                                <button class="text-primary ml-2">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-mouse-pointer mr-1"></i>
+                                    <span>156 clicks</span>
+                                </div>
+                                <div class="flex items-center">
+                                    </div></div></div></div></div></div></main></div></body></html>

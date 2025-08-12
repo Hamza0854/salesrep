@@ -1,0 +1,469 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <button id="back-to-dashboard" class="mr-3 text-white hover:text-gray-300">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Create Post</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div class="flex items-center">
+                    <button id="back-to-dashboard-desktop" class="mr-4 text-gray-600 hover:text-gray-800">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <h1 class="text-xl font-semibold text-gray-800">Create New Post</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Create Post Content -->
+        <main id="create-post-content" class="p-4 md:p-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Progress Bar -->
+                <div id="progress-section" class="mb-8">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-700">Step 1 of 3</span>
+                        <span class="text-sm text-gray-500">Post Details</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full w-1/3 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Form Container -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <form id="create-post-form">
+                        <!-- Basic Information -->
+                        <div id="basic-info-section" class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-6">Basic Information</h2>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Post Title *</label>
+                                    <input type="text" required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter an engaging post title">
+                                    <p class="text-xs text-gray-500 mt-1">Make it catchy and descriptive to attract more clicks</p>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                                    <select required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="">Select a category</option>
+                                        <option value="fashion">Fashion &amp; Style</option>
+                                        <option value="tech">Technology</option>
+                                        <option value="home">Home &amp; Garden</option>
+                                        <option value="health">Health &amp; Fitness</option>
+                                        <option value="travel">Travel</option>
+                                        <option value="food">Food &amp; Dining</option>
+                                        <option value="beauty">Beauty &amp; Skincare</option>
+                                        <option value="automotive">Automotive</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Target Location</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="e.g., New York, USA">
+                                    <p class="text-xs text-gray-500 mt-1">Optional: Target specific geographic areas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div id="content-section" class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-6">Content &amp; Media</h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                                    <textarea required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-32 resize-none" placeholder="Write a compelling description that will encourage people to click your referral link..."></textarea>
+                                    <div class="flex justify-between mt-1">
+                                        <p class="text-xs text-gray-500">Be detailed and persuasive</p>
+                                        <span class="text-xs text-gray-400">0/500</span>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Images</label>
+                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer">
+                                        <div class="space-y-4">
+                                            <div class="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center">
+                                                <i class="fa-solid fa-cloud-upload text-gray-400 text-2xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600 font-medium">Drag and drop your images here</p>
+                                                <p class="text-sm text-gray-500">or click to browse files</p>
+                                            </div>
+                                            <button type="button" class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-secondary transition-colors">
+                                                Browse Files
+                                            </button>
+                                            <p class="text-xs text-gray-400">PNG, JPG up to 10MB each. Max 5 images.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Image Preview Area -->
+                                <div id="image-preview" class="hidden">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Image Preview</label>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <div class="relative group">
+                                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" class="w-full h-24 object-cover rounded-lg">
+                                            <button class="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <i class="fa-solid fa-times text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Referral Settings -->
+                        <div id="referral-section" class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-6">Referral Settings</h2>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Referral Link *</label>
+                                    <input type="url" required="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://example.com/your-referral-link">
+                                    <p class="text-xs text-gray-500 mt-1">The link users will be redirected to when they click</p>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Expected Commission</label>
+                                    <div class="relative">
+                                        <span class="absolute left-3 top-3 text-gray-500">$</span>
+                                        <input type="number" step="0.01" class="w-full border border-gray-300 rounded-lg pl-8 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="0.00">
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">Estimated earnings per conversion</p>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Target Communities</label>
+                                    <select multiple="" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-32">
+                                        <option value="fashion-lovers">Fashion Lovers NYC</option>
+                                        <option value="tech-enthusiasts">Tech Enthusiasts</option>
+                                        <option value="home-decor">Home Decor Community</option>
+                                        <option value="fitness-group">Fitness &amp; Wellness Group</option>
+                                        <option value="food-lovers">Food Lovers United</option>
+                                        <option value="travel-community">Travel Community</option>
+                                        <option value="beauty-tips">Beauty Tips &amp; Reviews</option>
+                                        <option value="car-enthusiasts">Car Enthusiasts</option>
+                                    </select>
+                                    <p class="text-xs text-gray-500 mt-1">Hold Ctrl/Cmd to select multiple communities</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Options -->
+                        <div id="advanced-section" class="p-6">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-6">Advanced Options</h2>
+                            
+                            <div class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Post Visibility</label>
+                                        <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                            <option value="public">Public - Everyone can see</option>
+                                            <option value="communities">My Communities Only</option>
+                                            <option value="private">Private - Link sharing only</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Schedule Post</label>
+                                        <input type="datetime-local" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <p class="text-xs text-gray-500 mt-1">Leave empty to publish immediately</p>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Keywords</label>
+                                    <div class="border border-gray-300 rounded-lg p-3 min-h-[120px]">
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-blue-200 transition-colors" onclick="toggleKeyword(this)">sale</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">discount</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">trending</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">new arrival</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">limited time</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">exclusive</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">premium</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">bestseller</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">featured</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">hot deal</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">must have</span>
+                                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200 transition-colors" onclick="toggleKeyword(this)">popular</span>
+                                        </div>
+                                        <input type="text" class="w-full border-0 focus:outline-none text-sm" placeholder="Type custom keywords and press Enter..." onkeypress="addCustomKeyword(event)">
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">Click keywords to select them or add custom ones</p>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="auto-share" class="mt-1 mr-3">
+                                    <div>
+                                        <label for="auto-share" class="text-sm font-medium text-gray-700">Auto-share to selected communities</label>
+                                        <p class="text-xs text-gray-500">Automatically post to the communities selected above</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div id="form-actions" class="p-6 bg-gray-50 rounded-b-lg flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <button type="button" id="save-draft" class="w-full sm:w-auto bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors flex items-center justify-center">
+                                <i class="fa-solid fa-save mr-2"></i>
+                                Save as Draft
+                            </button>
+                            
+                            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                <button type="button" id="preview-post" class="w-full sm:w-auto bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                    <i class="fa-solid fa-eye mr-2"></i>
+                                    Preview
+                                </button>
+                                <button type="submit" id="publish-post" class="w-full sm:w-auto bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-secondary transition-colors flex items-center justify-center">
+                                    <i class="fa-solid fa-rocket mr-2"></i>
+                                    Publish Post
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Back to dashboard functionality
+        document.getElementById('back-to-dashboard').addEventListener('click', function() {
+            // Navigate back to dashboard
+            window.history.back();
+        });
+        
+        document.getElementById('back-to-dashboard-desktop').addEventListener('click', function() {
+            // Navigate back to dashboard
+            window.history.back();
+        });
+        
+        // Form submission
+        document.getElementById('create-post-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            alert('Post published successfully!');
+            
+            // Navigate back to dashboard
+            window.history.back();
+        });
+        
+        // Save draft functionality
+        document.getElementById('save-draft').addEventListener('click', function() {
+            alert('Draft saved successfully!');
+        });
+        
+        // Preview functionality
+        document.getElementById('preview-post').addEventListener('click', function() {
+            alert('Preview functionality will open in a new window');
+        });
+        
+        // Character counter for description
+        const descriptionTextarea = document.querySelector
+
+        // Keyword selection functionality
+        function toggleKeyword(element) {
+            if (element.classList.contains('bg-blue-100')) {
+                element.classList.remove('bg-blue-100', 'text-blue-800');
+                element.classList.add('bg-gray-100', 'text-gray-700');
+            } else {
+                element.classList.remove('bg-gray-100', 'text-gray-700');
+                element.classList.add('bg-blue-100', 'text-blue-800');
+            }
+        }
+        
+        // Add custom keyword functionality
+        function addCustomKeyword(event) {
+            if (event.key === 'Enter' && event.target.value.trim()) {
+                const keywordContainer = event.target.parentElement.querySelector('.flex');
+                const newKeyword = document.createElement('span');
+                newKeyword.className = 'bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-blue-200 transition-colors';
+                newKeyword.textContent = event.target.value.trim();
+                newKeyword.onclick = function() { toggleKeyword(this); };
+                keywordContainer.appendChild(newKeyword);
+                event.target.value = '';
+            }
+        }
+    </script>
+
+</body></html>

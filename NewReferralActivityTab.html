@@ -1,0 +1,852 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <div class="flex items-center mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                <div>
+                    <div class="font-medium">John Smith</div>
+                    <div class="text-gray-400 text-sm">Sales Representative</div>
+                </div>
+            </div>
+            <button class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-800">Referral Activity</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Tabs -->
+            <div class="px-6 border-b border-gray-200">
+                <div class="flex">
+                    <a href="NewSalesRepDashboardHome.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Overview
+                    </a>
+                    <a href="NewReferralActivityTab.html" class=" py-3 px-4 border-b-2 border-primary text-primary font-medium">
+                        Referral Activity
+                    </a>
+                    <a href="NewCommunitiesTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Communities
+                    </a>
+                    <a href="NewInviteLinkGeneratorTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Invite &amp; Link Generator
+                    </a>
+                    <a href="NewPostBasedLinksTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Post-Base Links
+                    </a>
+                    <a href="NewEarningsCommissionsTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Earnings &amp; Commissions
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Tabs -->
+        <div class="md:hidden px-4 py-2 bg-white border-b overflow-x-auto whitespace-nowrap">
+            <div class="flex">
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Overview
+                </button>
+                <button class="py-2 px-3 border-b-2 border-primary text-primary font-medium text-sm">
+                    Referrals
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Communities
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Invite
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Earnings
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <main id="dashboard-content" class="p-4 md:p-6">
+            <!-- Referral Activity Tab Content -->
+            <div id="referral-activity-tab">
+                <!-- Filters and Actions -->
+                <div id="referral-filters" class="bg-white rounded-lg shadow-sm p-4 md:p-6 border border-gray-100 mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-4 md:mb-0">Referral Activity</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="NewCreateNewReferral.html" class="flex items-center px-3 py-2 bg-primary text-white rounded-md text-sm font-medium">
+                                <i class="fa-solid fa-plus mr-2"></i>Create New Referral
+                            </a>
+                            <button class="flex items-center px-3 py-2 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium">
+                                <i class="fa-solid fa-download mr-2"></i>Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-center gap-4 mt-4">
+                        <div class="flex-grow">
+                            <div class="relative">
+                                <input type="text" placeholder="Search posts..." class="w-full border border-gray-300 rounded-md py-2 px-4 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <select class="border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>All Categories</option>
+                                <option>Fashion</option>
+                                <option>Technology</option>
+                                <option>Home &amp; Garden</option>
+                                <option>Health &amp; Fitness</option>
+                            </select>
+                            <select class="border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>Date Range</option>
+                                <option>Last 7 days</option>
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                                <option>Custom</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Status Filters -->
+                <div id="status-filters" class="flex mb-6 overflow-x-auto">
+                    <button class="py-2 px-4 bg-primary text-white rounded-md text-sm font-medium mr-2 flex items-center">
+                        All <span class="ml-2 bg-white text-primary rounded-full w-5 h-5 flex items-center justify-center text-xs">24</span>
+                    </button>
+                    <button class="py-2 px-4 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium mr-2 flex items-center">
+                        Active <span class="ml-2 bg-gray-100 text-gray-600 rounded-full w-5 h-5 flex items-center justify-center text-xs">15</span>
+                    </button>
+                    <button class="py-2 px-4 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium mr-2 flex items-center">
+                        Expired <span class="ml-2 bg-gray-100 text-gray-600 rounded-full w-5 h-5 flex items-center justify-center text-xs">5</span>
+                    </button>
+                    <button class="py-2 px-4 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium mr-2 flex items-center">
+                        Converted <span class="ml-2 bg-gray-100 text-gray-600 rounded-full w-5 h-5 flex items-center justify-center text-xs">4</span>
+                    </button>
+                </div>
+                
+                <!-- Referral Activity Table -->
+                <div id="referral-activity-table" class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                    <!-- Manual Referrals Section -->
+                    <div class="border-b border-gray-200">
+                        <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 flex items-center">
+                                <i class="fa-solid fa-user-plus mr-2"></i>
+                                Manual Referrals
+                                <span class="ml-2 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                            </h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Referred User
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Email
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Related Post/Ad
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Join Status
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Referral Date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Commission
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Source
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-gray-200 rounded-full mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-user text-gray-400"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Emma Rodriguez</div>
+                                                    <div class="text-xs text-gray-500">Pending</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">emma.rodriguez@email.com</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg mr-2 flex items-center justify-center">
+                                                    <i class="fa-solid fa-image text-primary text-xs"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-primary hover:text-primary-dark cursor-pointer">Summer Fashion Collection 2023</div>
+                                                    <div class="text-xs text-gray-500">Fashion • Active</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                <i class="fa-solid fa-clock mr-1"></i>Invited
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Jul 10, 2023
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $0.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-500">WhatsApp</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="Resend Invitation">
+                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Copy Link">
+                                                    <i class="fa-solid fa-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="More Options">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-gray-200 rounded-full mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-user text-gray-400"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">David Park</div>
+                                                    <div class="text-xs text-gray-500">Pending</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">david.park@email.com</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-secondary bg-opacity-10 rounded-lg mr-2 flex items-center justify-center">
+                                                    <i class="fa-solid fa-laptop text-secondary text-xs"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-primary hover:text-primary-dark cursor-pointer">Latest Tech Gadgets Review</div>
+                                                    <div class="text-xs text-gray-500">Technology • Active</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                <i class="fa-solid fa-clock mr-1"></i>Invited
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Jul 8, 2023
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $0.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-500">LinkedIn</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="Resend Invitation">
+                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Copy Link">
+                                                    <i class="fa-solid fa-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="More Options">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-red-100 rounded-full mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-user-xmark text-red-500"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Lisa Thompson</div>
+                                                    <div class="text-xs text-gray-500">Declined</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">lisa.thompson@email.com</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-green-100 rounded-lg mr-2 flex items-center justify-center">
+                                                    <i class="fa-solid fa-seedling text-green-600 text-xs"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-primary hover:text-primary-dark cursor-pointer">Home Garden Essentials</div>
+                                                    <div class="text-xs text-gray-500">Home &amp; Garden • Active</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                                <i class="fa-solid fa-times-circle mr-1"></i>Declined
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Jul 5, 2023
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $0.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-500">SMS</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="Send New Invitation">
+                                                    <i class="fa-solid fa-redo"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="View Details">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="More Options">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Auto-Generated via Posts Section -->
+                    <div>
+                        <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 flex items-center">
+                                <i class="fa-solid fa-magic-wand-sparkles mr-2"></i>
+                                Auto-Generated via Posts
+                                <span class="ml-2 bg-secondary text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">4</span>
+                            </h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Post Title
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Referral Link
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Referred User
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Join Status
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Post Created
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Clicks
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Commission
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-lg mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-image text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-primary hover:text-primary-dark cursor-pointer">Summer Fashion Collection 2023</div>
+                                                    <div class="text-xs text-gray-500">Fashion • Active</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm text-gray-900 font-mono bg-gray-50 px-2 py-1 rounded text-xs max-w-32 truncate">postersz.co/ref/sf2023</div>
+                                                <button class="ml-2 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full mr-3" alt="User avatar">
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                    <div class="text-xs text-gray-500">Fashion Blogger</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                <i class="fa-solid fa-check-circle mr-1"></i>Joined
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Jul 10, 2023</div>
+                                            <div class="text-xs text-gray-500">3:45 PM</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">142</div>
+                                            <div class="text-xs text-gray-500">clicks</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $25.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="View Post">
+                                                    <i class="fa-solid fa-external-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Copy Link">
+                                                    <i class="fa-solid fa-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Analytics">
+                                                    <i class="fa-solid fa-chart-line"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-secondary bg-opacity-10 rounded-lg mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-laptop text-secondary"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-primary hover:text-primary-dark cursor-pointer">Latest Tech Gadgets Review</div>
+                                                    <div class="text-xs text-gray-500">Technology • Active</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm text-gray-900 font-mono bg-gray-50 px-2 py-1 rounded text-xs max-w-32 truncate">postersz.co/ref/tech2023</div>
+                                                <button class="ml-2 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-8 h-8 rounded-full mr-3" alt="User avatar">
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Mike Chen</div>
+                                                    <div class="text-xs text-gray-500">Tech Reviewer</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                <i class="fa-solid fa-check-circle mr-1"></i>Joined
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Jul 8, 2023</div>
+                                            <div class="text-xs text-gray-500">11:20 AM</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">89</div>
+                                            <div class="text-xs text-gray-500">clicks</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $30.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="View Post">
+                                                    <i class="fa-solid fa-external-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Copy Link">
+                                                    <i class="fa-solid fa-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Analytics">
+                                                    <i class="fa-solid fa-chart-line"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-green-100 rounded-lg mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-seedling text-green-600"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-primary hover:text-primary-dark cursor-pointer">Home Garden Essentials</div>
+                                                    <div class="text-xs text-gray-500">Home &amp; Garden • Active</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm text-gray-900 font-mono bg-gray-50 px-2 py-1 rounded text-xs max-w-32 truncate">postersz.co/ref/garden23</div>
+                                                <button class="ml-2 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-500 italic">No referrals yet</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-600">
+                                                <i class="fa-solid fa-minus-circle mr-1"></i>Pending
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Jul 5, 2023</div>
+                                            <div class="text-xs text-gray-500">2:15 PM</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">34</div>
+                                            <div class="text-xs text-gray-500">clicks</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $0.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="View Post">
+                                                    <i class="fa-solid fa-external-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Copy Link">
+                                                    <i class="fa-solid fa-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Analytics">
+                                                    <i class="fa-solid fa-chart-line"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-red-100 rounded-lg mr-3 flex items-center justify-center">
+                                                    <i class="fa-solid fa-dumbbell text-red-600"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-400">Fitness Equipment Sale</div>
+                                                    <div class="text-xs text-red-500">Health &amp; Fitness • Expired</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm text-gray-900 font-mono bg-gray-50 px-2 py-1 rounded text-xs max-w-32 truncate">postersz.co/ref/fitness23</div>
+                                                <button class="ml-2 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-500 italic">No referrals yet</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-600">
+                                                <i class="fa-solid fa-minus-circle mr-1"></i>Pending
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Jul 5, 2023</div>
+                                            <div class="text-xs text-gray-500">2:15 PM</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">34</div>
+                                            <div class="text-xs text-gray-500">clicks</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            $0.00
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <div class="flex items-center space-x-3">
+                                                <button class="text-primary hover:text-primary-dark" title="View Post">
+                                                    <i class="fa-solid fa-external-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Copy Link">
+                                                    <i class="fa-solid fa-link"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700" title="Analytics">
+                                                    <i class="fa-solid fa-chart-line"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Action Button (Mobile) -->
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 md:hidden">
+            <button class="w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.getElementById('mobile-menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+    </script>
+
+</body></html>

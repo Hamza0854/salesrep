@@ -1,0 +1,923 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <div class="flex items-center mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                <div>
+                    <div class="font-medium">John Smith</div>
+                    <div class="text-gray-400 text-sm">Sales Representative</div>
+                </div>
+            </div>
+            <button class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-800">Communities</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- tabs -->
+            <div class="px-6 border-b border-gray-200">
+                <div class="flex">
+                    <a href="NewSalesRepDashboardHome.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Overview
+                    </a>
+                    <a href="NewReferralActivityTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Referral Activity
+                    </a>
+                    <a href="NewCommunitiesTab.html" class="py-3 px-4 border-b-2 border-primary text-primary font-medium">
+                        Communities
+                    </a>
+                    <a href="NewInviteLinkGeneratorTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Invite &amp; Link Generator
+                    </a>
+                    <a href="NewPostBasedLinksTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Post-Base Links
+                    </a>
+                    <a href="NewEarningsCommissionsTab.html" class="py-3 px-4 text-gray-500 hover:text-gray-700">
+                        Earnings &amp; Commissions
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Tabs -->
+        <div class="md:hidden px-4 py-2 bg-white border-b overflow-x-auto whitespace-nowrap">
+            <div class="flex">
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Overview
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Referrals
+                </button>
+                <button class="py-2 px-3 border-b-2 border-primary text-primary font-medium text-sm">
+                    Communities
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Invite
+                </button>
+                <button class="py-2 px-3 text-gray-500 text-sm">
+                    Earnings
+                </button>
+            </div>
+        </div>
+
+        <!-- Communities Content -->
+        <main id="communities-content" class="p-4 md:p-6">
+            <!-- Communities Header -->
+            <div id="communities-header" class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Manage Communities</h2>
+                    <p class="text-gray-500 text-sm">Create, manage, and grow your communities</p>
+                </div>
+                <div class="flex space-x-3 mt-3 md:mt-0">
+                    <button id="invite-user-btn" class="px-4 py-2 bg-white border border-gray-300 rounded-md text-gray-700 flex items-center">
+                        <i class="fa-solid fa-user-plus mr-2"></i>
+                        Invite User
+                    </button>
+                    <button id="create-community-btn" class="px-4 py-2 bg-primary text-white rounded-md flex items-center">
+                        <i class="fa-solid fa-plus mr-2"></i>
+                        Create Community
+                    </button>
+                </div>
+            </div>
+
+            <!-- Communities List -->
+            <div id="communities-list" class="bg-white rounded-lg shadow-sm border border-gray-100 mb-6 overflow-hidden">
+                <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="font-semibold text-gray-800">Your Communities</h3>
+                    <div class="flex items-center">
+                        <div class="relative mr-3">
+                            <select class="text-sm border border-gray-300 rounded-md p-1.5 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Locations</option>
+                                <option>Boro Park, NY</option>
+                                <option>Flatbush, NY</option>
+                                <option>Brooklyn, NY</option>
+                                <option>Manhattan, NY</option>
+                                <option>Queens, NY</option>
+                                <option>Lakewood, NJ</option>
+                                <option>Lakewood – South Side</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-2.5 text-gray-500 text-xs pointer-events-none"></i>
+                        </div>
+                        <div class="relative mr-3">
+                            <select class="text-sm border border-gray-300 rounded-md p-1.5 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>All Status</option>
+                                <option>Public</option>
+                                <option>Private</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-2.5 text-gray-500 text-xs pointer-events-none"></i>
+                        </div>
+                        <div class="relative">
+                            <select class="text-sm border border-gray-300 rounded-md p-1.5 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option>Sort by: Latest</option>
+                                <option>Sort by: Members</option>
+                                <option>Sort by: Activity</option>
+                                <option>Sort by: Location</option>
+                                <option>Sort by: Commission</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-2.5 text-gray-500 text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50">
+                                <th class="px-4 py-3">Community Name</th>
+                                <th class="px-4 py-3">Location</th>
+                                <th class="px-4 py-3">Members</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3">Commission</th>
+                                <th class="px-4 py-3">Last Activity</th>
+                                <th class="px-4 py-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fa-solid fa-laptop-code text-purple-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-gray-800">Tech Enthusiasts</div>
+                                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                                <span>Created Jul 10, 2023</span>
+                                            </div>
+                                            <div class="flex items-center mt-1">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700 mr-2">
+                                                    <i class="fa-solid fa-file-text mr-1 text-xs"></i>
+                                                    8 Posts
+                                                </span>
+                                                <i class="fa-solid fa-arrow-right text-gray-400 text-xs mx-1"></i>
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700">
+                                                    <i class="fa-solid fa-mouse-pointer mr-1 text-xs"></i>
+                                                    234 Clicks
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                                            <i class="fa-solid fa-location-dot mr-1"></i>
+                                            Brooklyn, NY
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">42</td>
+                                <td class="px-4 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        Public
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">5%</td>
+                                <td class="px-4 py-4 text-sm text-gray-500">Today, 2:45 PM</td>
+                                <td class="px-4 py-4 text-sm">
+                                    <button class="text-primary hover:underline">View</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fa-solid fa-tshirt text-blue-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-gray-800">Fashion Forward</div>
+                                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                                <span>Created Jun 15, 2023</span>
+                                            </div>
+                                            <div class="flex items-center mt-1">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700 mr-2">
+                                                    <i class="fa-solid fa-file-text mr-1 text-xs"></i>
+                                                    12 Posts
+                                                </span>
+                                                <i class="fa-solid fa-arrow-right text-gray-400 text-xs mx-1"></i>
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700">
+                                                    <i class="fa-solid fa-mouse-pointer mr-1 text-xs"></i>
+                                                    189 Clicks
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">
+                                            <i class="fa-solid fa-location-dot mr-1"></i>
+                                            Boro Park, NY
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">37</td>
+                                <td class="px-4 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        Public
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">4%</td>
+                                <td class="px-4 py-4 text-sm text-gray-500">Yesterday, 9:12 AM</td>
+                                <td class="px-4 py-4 text-sm">
+                                    <button class="text-primary hover:underline">View</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fa-solid fa-utensils text-green-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-gray-800">Foodies Club</div>
+                                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                                <span>Created Jun 5, 2023</span>
+                                            </div>
+                                            <div class="flex items-center mt-1">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700 mr-2">
+                                                    <i class="fa-solid fa-file-text mr-1 text-xs"></i>
+                                                    6 Posts
+                                                </span>
+                                                <i class="fa-solid fa-arrow-right text-gray-400 text-xs mx-1"></i>
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700">
+                                                    <i class="fa-solid fa-mouse-pointer mr-1 text-xs"></i>
+                                                    97 Clicks
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                                            <i class="fa-solid fa-location-dot mr-1"></i>
+                                            Lakewood, NJ
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">29</td>
+                                <td class="px-4 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        Private
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">6%</td>
+                                <td class="px-4 py-4 text-sm text-gray-500">Jul 20, 2023</td>
+                                <td class="px-4 py-4 text-sm">
+                                    <button class="text-primary hover:underline">View</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fa-solid fa-dumbbell text-red-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-gray-800">Fitness Fanatics</div>
+                                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                                <span>Created May 22, 2023</span>
+                                            </div>
+                                            <div class="flex items-center mt-1">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700 mr-2">
+                                                    <i class="fa-solid fa-file-text mr-1 text-xs"></i>
+                                                    4 Posts
+                                                </span>
+                                                <i class="fa-solid fa-arrow-right text-gray-400 text-xs mx-1"></i>
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700">
+                                                    <i class="fa-solid fa-mouse-pointer mr-1 text-xs"></i>
+                                                    52 Clicks
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <div class="flex items-center">
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700 border border-orange-200">
+                                            <i class="fa-solid fa-location-dot mr-1"></i>
+                                            Flatbush, NY
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">24</td>
+                                <td class="px-4 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        Public
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-700">5%</td>
+                                <td class="px-4 py-4 text-sm text-gray-500">Jul 18, 2023</td>
+                                <td class="px-4 py-4 text-sm">
+                                    <button class="text-primary hover:underline">View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Community Detail View -->
+            <div id="community-detail" class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                    <div class="flex items-center">
+                        <button class="mr-3 text-gray-500">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-laptop-code text-purple-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-800">Tech Enthusiasts</div>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <span>Brooklyn, NY</span>
+                                    <span class="mx-1">•</span>
+                                    <span>42 members</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Created Jul 10, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="px-3 py-1.5 bg-white border border-gray-300 rounded-md text-sm text-gray-700">
+                            <i class="fa-solid fa-pencil mr-1"></i> Edit
+                        </button>
+                        <button class="px-3 py-1.5 bg-primary text-white rounded-md text-sm">
+                            <i class="fa-solid fa-user-plus mr-1"></i> Invite
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Community Detail Tabs -->
+                <div class="border-b border-gray-200">
+                    <div class="flex overflow-x-auto">
+                        <button class="px-4 py-3 text-primary font-medium border-b-2 border-primary">
+                            Members
+                        </button>
+                        <button class="px-4 py-3 text-gray-500 hover:text-gray-700">
+                            Ads by Members
+                        </button>
+                        <button class="px-4 py-3 text-gray-500 hover:text-gray-700">
+                            Community Info
+                        </button>
+                        <button class="px-4 py-3 text-gray-500 hover:text-gray-700">
+                            Invite History
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Members List Tab Content -->
+                <div id="members-list-tab" class="p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search members..." class="border border-gray-300 rounded-md pl-9 pr-4 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary">
+                            <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1.5 bg-white border border-gray-300 rounded-md text-sm text-gray-700 flex items-center">
+                                <i class="fa-solid fa-filter mr-1"></i> Filter
+                            </button>
+                            <button class="px-3 py-1.5 bg-white border border-gray-300 rounded-md text-sm text-gray-700 flex items-center">
+                                <i class="fa-solid fa-download mr-1"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50">
+                                    <th class="px-4 py-3">Member</th>
+                                    <th class="px-4 py-3">Email</th>
+                                    <th class="px-4 py-3">Join Date</th>
+                                    <th class="px-4 py-3">Status</th>
+                                    <th class="px-4 py-3">Posts</th>
+                                    <th class="px-4 py-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-8 h-8 rounded-full mr-3">
+                                            <div class="font-medium text-gray-800">Michael Brown</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">michael.brown@example.com</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 15, 2023</td>
+                                    <td class="px-4 py-3">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">12</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-gray-500 hover:text-gray-700 mr-2">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" class="w-8 h-8 rounded-full mr-3">
+                                            <div class="font-medium text-gray-800">Jessica Miller</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">jessica.miller@example.com</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 12, 2023</td>
+                                    <td class="px-4 py-3">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">8</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-gray-500 hover:text-gray-700 mr-2">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full mr-3">
+                                            <div class="font-medium text-gray-800">David Johnson</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">david.johnson@example.com</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 11, 2023</td>
+                                    <td class="px-4 py-3">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                            Pending
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">0</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-gray-500 hover:text-gray-700 mr-2">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full mr-3">
+                                            <div class="font-medium text-gray-800">Emily Wilson</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">emily.wilson@example.com</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 10, 2023</td>
+                                    <td class="px-4 py-3">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">15</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-gray-500 hover:text-gray-700 mr-2">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-8 h-8 rounded-full mr-3">
+                                            <div class="font-medium text-gray-800">Robert Taylor</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">robert.taylor@example.com</td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">Jul 10, 2023</td>
+                                    <td class="px-4 py-3">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                            Inactive
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500">3</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button class="text-gray-500 hover:text-gray-700 mr-2">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <div class="text-sm text-gray-500">
+                            Showing 1-5 of 42 members
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md text-gray-500 hover:bg-gray-50">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md bg-primary text-white">1</button>
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">2</button>
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">3</button>
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md text-gray-500 hover:bg-gray-50">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Action Button (Mobile) -->
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 md:hidden">
+            <button class="w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white">
+                <i class="fa-solid fa-user-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Create Community Modal (Hidden by default) -->
+    <div id="create-community-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-lg mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800">Create New Community</h2>
+                    <button id="close-community-modal" class="text-gray-500">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Community Name</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter community name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-24" placeholder="Enter community description"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Privacy</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="privacy" class="mr-2" checked="">
+                                <span>Public</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="privacy" class="mr-2">
+                                <span>Private</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Commission Rate (%)</label>
+                        <input type="number" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter commission percentage" value="5">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Community Icon</label>
+                        <div class="border border-dashed border-gray-300 rounded-md p-4 text-center">
+                            <i class="fa-solid fa-cloud-upload-alt text-gray-400 text-2xl mb-2"></i>
+                            <p class="text-sm text-gray-500">Drag and drop or click to upload</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2">Cancel</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-md">Create Community</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite User Modal (Hidden by default) -->
+    <div id="invite-user-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-lg mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800">Invite User to Community</h2>
+                    <button id="close-invite-modal" class="text-gray-500">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Select Community</label>
+                        <select class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option>Tech Enthusiasts</option>
+                            <option>Fashion Forward</option>
+                            <option>Foodies Club</option>
+                            <option>Fitness Fanatics</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Invite Method</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="invite-method" class="mr-2" checked="">
+                                <span>Email</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="invite-method" class="mr-2">
+                                <span>Generate Link</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email Addresses</label>
+                        <textarea class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary h-24" placeholder="Enter email addresses, separated by commas"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Invitation Message (Optional)</label>
+                        <textarea class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary h-24" placeholder="Enter a personal message"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Invitation Expiry</label>
+                        <select class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option>7 days</option>
+                            <option>14 days</option>
+                            <option>30 days</option>
+                            <option>Never</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2">Cancel</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-md">Send Invites</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.getElementById('mobile-menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+        
+        // Create Community modal toggle
+        document.getElementById('create-community-btn').addEventListener('click', function() {
+            document.getElementById('create-community-modal').classList.remove('hidden');
+        });
+        
+        document.getElementById('close-community-modal').addEventListener('click', function() {
+            document.getElementById('create-community-modal').classList.add('hidden');
+        });
+        
+        // Invite User modal toggle
+        document.getElementById('invite-user-btn').addEventListener('click', function() {
+            document.getElementById('invite-user-modal').classList.remove('hidden');
+        });
+        
+        document.getElementById('close-invite-modal').addEventListener('click', function() {
+            document.getElementById('invite-user-modal').classList.add('hidden');
+        });
+    </script>
+
+</body></html>

@@ -1,0 +1,393 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div class="flex items-center">
+                    <button class="mr-4 text-gray-500 hover:text-gray-700" onclick="history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <h1 class="text-xl font-semibold text-gray-800">Create New Referral</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Header -->
+        <div class="md:hidden px-4 py-3 bg-white border-b flex items-center">
+            <button class="mr-3 text-gray-500" onclick="history.back()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1 class="text-lg font-semibold text-gray-800">Create New Referral</h1>
+        </div>
+
+        <!-- Create Referral Form -->
+        <main id="create-referral-content" class="p-4 md:p-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Progress Steps -->
+                <div id="progress-steps" class="mb-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium">1</div>
+                            <div class="ml-3">
+                                <div class="text-sm font-medium text-gray-900">Referral Type</div>
+                                <div class="text-xs text-gray-500">Choose referral method</div>
+                            </div>
+                        </div>
+                        <div class="flex-1 mx-4 h-0.5 bg-gray-200">
+                            <div class="h-full bg-primary w-1/2"></div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-medium">2</div>
+                            <div class="ml-3">
+                                <div class="text-sm font-medium text-gray-500">Details</div>
+                                <div class="text-xs text-gray-400">Enter information</div>
+                            </div>
+                        </div>
+                        <div class="flex-1 mx-4 h-0.5 bg-gray-200"></div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-medium">3</div>
+                            <div class="ml-3">
+                                <div class="text-sm font-medium text-gray-500">Review</div>
+                                <div class="text-xs text-gray-400">Confirm &amp; send</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referral Type Selection -->
+                <div id="referral-type-section" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-6">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Choose Referral Type</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Manual Referral -->
+                        <div class="border-2 border-primary bg-primary bg-opacity-5 rounded-lg p-6 cursor-pointer hover:bg-primary hover:bg-opacity-10 transition">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fa-solid fa-user-plus text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Manual Referral</h3>
+                                    <p class="text-sm text-gray-600">Invite specific people directly</p>
+                                </div>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-2"></i>Send personalized invites</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-2"></i>Track individual responses</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-2"></i>Multiple contact methods</li>
+                            </ul>
+                        </div>
+
+                        <!-- Post-Based Referral -->
+                        <div class="border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-primary hover:bg-primary hover:bg-opacity-5 transition">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fa-solid fa-magic-wand-sparkles text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Post-Based Referral</h3>
+                                    <p class="text-sm text-gray-600">Create post with referral link</p>
+                                </div>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-2"></i>Auto-generate referral links</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-2"></i>Track clicks and conversions</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-2"></i>Social media ready</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual Referral Form -->
+                <div id="manual-referral-form" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-6">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-semibold text-gray-800">Manual Referral Details</h2>
+        <span class="text-sm text-gray-500">Step 2 of 3</span>
+    </div>
+
+    <form class="space-y-6">
+        <!-- Contact Information -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter full name">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                <input type="email" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter email address">
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                <input type="tel" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter phone number">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+                <select class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <option>Email</option>
+                    <option>WhatsApp</option>
+                    <option>SMS</option>
+                    <option>LinkedIn</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Related Post/Ad -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Related Post/Ad</label>
+            <select class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option>Select a post...</option>
+                <option>Summer Fashion Collection 2023</option>
+                <option>Latest Tech Gadgets Review</option>
+                <option>Home Garden Essentials</option>
+                <option>Fitness Equipment Sale</option>
+            </select>
+        </div>
+
+        <!-- Personal Message -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Personal Message</label>
+            <textarea rows="4" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Add a personal message to your referral (optional)"></textarea>
+            <p class="text-xs text-gray-500 mt-1">This message will be included with the referral invitation</p>
+        </div>
+
+        <!-- Referral Link Preview -->
+        <div class="bg-blue-50 rounded-lg p-4">
+            <h3 class="text-md font-medium text-gray-800 mb-3">Referral Link Preview</h3>
+            <div class="flex items-center justify-between bg-white rounded-md p-3 border">
+                <span class="text-sm font-mono text-gray-700">postersz.co/ref/manual-john-smith-2023</span>
+                <button type="button" class="text-primary hover:text-primary-dark">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">This link will be automatically generated when you create the referral</p>
+        </div>
+    </form>
+</div>
+
+                <!-- Action Buttons -->
+                <div id="action-buttons" class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <button class="w-full md:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition">
+                        <i class="fa-solid fa-arrow-left mr-2"></i>Back
+                    </button>
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <button class="w-full md:w-auto px-6 py-2 bg-white border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition">
+                            Save as Draft
+                        </button>
+                        <button class="w-full md:w-auto px-6 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary-dark transition">
+                            <i class="fa-solid fa-paper-plane mr-2"></i>Send Referral
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div id="quick-actions" class="mt-8 bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <button class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            <i class="fa-solid fa-users text-primary mr-3"></i>
+                            <div class="text-left">
+                                <div class="text-sm font-medium text-gray-900">Bulk Import</div>
+                                <div class="text-xs text-gray-500">Upload CSV file</div>
+                            </div>
+                        </button>
+                        <button class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            <i class="fa-solid fa-address-book text-secondary mr-3"></i>
+                            <div class="text-left">
+                                <div class="text-sm font-medium text-gray-900">From Contacts</div>
+                                <div class="text-xs text-gray-500">Select from saved</div>
+                            </div>
+                        </button>
+                        <button class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            <i class="fa-solid fa-template text-accent mr-3"></i>
+                            <div class="text-left">
+                                <div class="text-sm font-medium text-gray-900">Use Template</div>
+                                <div class="text-xs text-gray-500">Pre-filled forms</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+
+</body></html>

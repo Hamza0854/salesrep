@@ -1,0 +1,441 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <button id="back-button" class="mr-3 hover:bg-gray-700 p-1 rounded">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">View Post</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300 cursor-pointer">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div class="flex items-center">
+                    <button id="back-button-desktop" class="mr-4 text-gray-600 hover:text-gray-800">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-800">View Post</h1>
+                        <p class="text-sm text-gray-500">Post details and performance</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <main id="post-content" class="p-4 md:p-6">
+            <!-- Post Header -->
+            <div id="post-header" class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fa-solid fa-file-lines text-blue-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800">Top 10 Tech Gadgets of 2023</h1>
+                            <div class="flex items-center text-sm text-gray-500 mt-1">
+                                <span class="mr-4">Created: Jul 10, 2023</span>
+                                <span class="mr-4">Category: Technology</span>
+                                <span class="text-xs font-medium bg-green-100 text-green-800 rounded-full px-2 py-1">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary transition">
+                            <i class="fa-solid fa-edit mr-2"></i>Edit Post
+                        </button>
+                        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-50 transition">
+                            <i class="fa-solid fa-share mr-2"></i>Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Stats -->
+            <div id="performance-stats" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Views</p>
+                            <h3 class="text-2xl font-bold mt-1">2,376</h3>
+                            <p class="text-green-500 text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-arrow-up mr-1"></i> 15.3% from last week
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-eye text-blue-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Click-Through Rate</p>
+                            <h3 class="text-2xl font-bold mt-1">4.2%</h3>
+                            <p class="text-green-500 text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-arrow-up mr-1"></i> Above average
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-mouse-pointer text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Conversions</p>
+                            <h3 class="text-2xl font-bold mt-1">8</h3>
+                            <p class="text-green-500 text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-check mr-1"></i> 2 this week
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-shopping-cart text-green-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm">Earnings</p>
+                            <h3 class="text-2xl font-bold mt-1">$237.60</h3>
+                            <p class="text-primary text-sm mt-1 flex items-center">
+                                <i class="fa-solid fa-dollar-sign mr-1"></i> $68 pending
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-coins text-green-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Content and Analytics -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                <!-- Post Content -->
+                <div id="post-details" class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 lg:col-span-2">
+                    <h3 class="font-semibold text-gray-800 mb-4">Post Content</h3>
+                    
+                    <!-- Featured Image -->
+                    <div class="mb-6">
+                        <img class="w-full h-64 object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a651efffdf-000e84b201b793deb655.png" alt="modern tech gadgets display on clean white background, smartphone, laptop, headphones, smartwatch, minimalist style">
+                    </div>
+
+                    <!-- Post Description -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-700 mb-2">Description</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            Discover the most innovative and game-changing technology gadgets that are defining 2023. From revolutionary smartphones with cutting-edge AI capabilities to smart home devices that seamlessly integrate into your daily routine, this comprehensive guide showcases the top 10 tech gadgets that every tech enthusiast should know about.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mt-3">
+                            Each gadget has been carefully selected based on innovation, user reviews, market impact, and practical utility. Whether you're looking to upgrade your current tech setup or stay ahead of the latest trends, these gadgets represent the pinnacle of modern technology.
+                        </p>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-700 mb-2">Tags</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">#technology</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">#gadgets</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">#2023</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">#innovation</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">#reviews</span>
+                        </div>
+                    </div>
+
+                    <!-- Referral Links -->
+                    <div>
+                        <h4 class="font-medium text-gray-700 mb-3">Referral Links</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-link text-gray-400 mr-3"></i>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-800">iPhone 15 Pro</div>
+                                        <div class="text-xs text-gray-500">apple.com/iphone-15-pro?ref=postersz123</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-green-600 font-medium">$15.00</span>
+                                    <button class="text-primary hover:bg-primary hover:text-white p-1 rounded transition">
+                                        <i class="fa-solid fa-copy text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-link text-gray-400 mr-3"></i>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-800">MacBook Pro M3</div>
+                                        <div class="text-xs text-gray-500">apple.com/macbook-pro?ref=postersz123</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-green-600 font-medium">$45.00</span>
+                                    <button class="text-primary hover:bg-primary hover:text-white p-1 rounded transition">
+                                        <i class="fa-solid fa-copy text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-link text-gray-400 mr-3"></i>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-800">AirPods Pro (2nd gen)</div>
+                                        <div class="text-xs text-gray-500">apple.com/airpods-pro?ref=postersz123</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-green-600 font-medium">$8.50</span>
+                                    <button class="text-primary hover:bg-primary hover:text-white p-1 rounded transition">
+                                        <i class="fa-solid fa-copy text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Panel -->
+                <div id="analytics-panel" class="space-y-6">
+                    <!-- Performance Chart -->
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <h3 class="font-semibold text-gray-800 mb-4">Views Over Time</h3>
+                        <div id="views-chart" class="h-48"></div>
+                    </div>
+
+                    <!-- Top Referrers -->
+                    <div class="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                        <h3 class="font-semibold text-gray-800 mb-4">Top Traffic Sources</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    </div></div></div></div></div></div></main></div></body></html>

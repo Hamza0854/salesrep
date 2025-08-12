@@ -1,0 +1,431 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#6366F1",
+        "accent": "#818CF8",
+        "dark": "#1F2937",
+        "light": "#F9FAFB"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-dark text-white flex flex-col shadow-lg z-10 hidden md:flex">
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="p-4 border-b border-gray-700 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-p text-white text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-gray-400 text-sm">Postersz</div>
+                    <div class="font-medium">Sales Rep Dashboard</div>
+                </div>
+            </div>
+        </a>
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-4">
+                <div class="mb-4">
+                    <a href="NewSalesRepDashboardHome.html">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                            <i class="fa-solid fa-chart-line mr-3"></i>
+                            Dashboard
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewReferralActivityTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-user-plus mr-3"></i>
+                            Referrals
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewCommunitiesTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-users mr-3"></i>
+                            Communities
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewInviteLinkGeneratorTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-link mr-3"></i>
+                            Invite Links
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewEarningsCommissionsTab.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-dollar-sign mr-3"></i>
+                            Earnings
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                            <i class="fa-solid fa-gear mr-3"></i>
+                            Settings
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <i class="fa-solid fa-p text-white"></i>
+            </div>
+            <div class="font-medium">Postersz</div>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-4 relative">
+                <i class="fa-solid fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            </button>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <div class="font-medium">Menu</div>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-chart-line mr-3"></i>
+                    Dashboard
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-user-plus mr-3"></i>
+                    Referrals
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                    <i class="fa-solid fa-users mr-3"></i>
+                    Communities
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-link mr-3"></i>
+                    Invite Links
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
+                    Earnings
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex items-center py-2 text-gray-300">
+                    <i class="fa-solid fa-gear mr-3"></i>
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <div class="flex items-center mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                <div>
+                    <div class="font-medium">John Smith</div>
+                    <div class="text-gray-400 text-sm">Sales Representative</div>
+                </div>
+            </div>
+            <button class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:ml-64 min-h-screen">
+        <!-- Header -->
+        <header id="header" class="bg-white shadow-sm hidden md:block">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-800">Community Detail</h1>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative mr-5">
+                        <input type="text" placeholder="Search..." class="border border-gray-300 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <div class="relative mr-5">
+                        <button class="relative">
+                            <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <a href="NewSalesRepProfile.html">
+                        <div class="flex items-center">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full mr-2" alt="User avatar">
+                            <span class="text-gray-700 font-medium">John Smith</span>
+                            <i class="fa-solid fa-chevron-down ml-2 text-gray-500 text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Bar -->
+        <div class="md:hidden px-4 py-2 bg-white border-b flex items-center">
+            <span class="text-primary mr-3 cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i>
+            </span>
+            <h1 class="text-lg font-medium text-gray-800">New Community</h1>
+        </div>
+
+        <!-- Community Detail Content -->
+        <main id="community-detail-content" class="p-4 md:p-6">
+            <!-- Back Link -->
+            <div id="back-link" class="mb-6 hidden md:block">
+                <span class="flex items-center text-primary hover:underline cursor-pointer">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    Back to Communities
+                </span>
+            </div>
+
+            <!-- Community Header -->
+            <div id="community-header" class="bg-white rounded-lg shadow-sm p-5 border border-gray-100 mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa-solid fa-users text-purple-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-800">New Community</h2>
+                            <div class="flex items-center text-gray-500 text-sm mb-1">
+                                <i class="fa-solid fa-location-dot text-gray-400 mr-1"></i>
+                                <span id="community-location" class="mr-2">Brooklyn, NY</span>
+                                <button id="edit-location-btn" class="text-primary hover:text-primary-dark text-xs" title="Edit Location">
+                                    <i class="fa-solid fa-edit"></i>
+                                </button>
+                            </div>
+                            <p class="text-gray-500 text-sm">Created on January 15, 2024</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex items-center bg-gray-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-users text-gray-500 mr-2"></i>
+                            <span class="text-sm font-medium">0 Members</span>
+                        </div>
+                        <div class="flex items-center bg-green-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-globe text-green-500 mr-2"></i>
+                            <span class="text-sm font-medium">Public</span>
+                        </div>
+                        <div class="flex items-center bg-blue-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-dollar-sign text-blue-500 mr-2"></i>
+                            <span class="text-sm font-medium">15% Commission</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Edit Modal -->
+            <div id="location-edit-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Edit Community Location</h3>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                        <input type="text" id="location-input" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter community location">
+                    </div>
+                    <div class="flex justify-end gap-3">
+                        <button id="cancel-location-btn" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50">Cancel</button>
+                        <button id="save-location-btn" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State for New Community -->
+            <div id="empty-community-state" class="bg-white rounded-lg shadow-sm p-8 border border-gray-100 text-center">
+                <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-users text-gray-400 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">Community Awaiting First Members</h3>
+                <p class="text-gray-500 mb-6 max-w-md mx-auto">This community is waiting for its first members. Invite others to get started and begin building an active community together.</p>
+                
+                <!-- Call to Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+                    <button class="bg-primary text-white px-6 py-3 rounded-md font-medium flex items-center justify-center hover:bg-primary-dark transition">
+                        <i class="fa-solid fa-user-plus mr-2"></i>
+                        Invite Members
+                    </button>
+                    <button class="border border-gray-300 text-gray-700 px-6 py-3 rounded-md font-medium flex items-center justify-center hover:bg-gray-50 transition">
+                        <i class="fa-solid fa-share mr-2"></i>
+                        Share Community
+                    </button>
+                </div>
+
+                <!-- Quick Setup Guide -->
+                <div class="bg-gray-50 rounded-lg p-6 text-left max-w-lg mx-auto">
+                    <h4 class="font-semibold text-gray-800 mb-4 text-center">Quick Setup Guide</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</div>
+                            <div>
+                                <p class="font-medium text-gray-800">Invite your first members</p>
+                                <p class="text-sm text-gray-500">Start by inviting people you know who would be interested in this community</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</div>
+                            <div>
+                                <p class="font-medium text-gray-800">Create your first post</p>
+                                <p class="text-sm text-gray-500">Share valuable content to encourage engagement and discussions</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</div>
+                            <div>
+                                <p class="font-medium text-gray-800">Set up referral links</p>
+                                <p class="text-sm text-gray-500">Generate referral links to start earning commissions from community activity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Actions -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 max-w-lg mx-auto">
+                    <button class="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 p-4 rounded-lg transition">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-2">
+                            <i class="fa-solid fa-link text-blue-500"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Generate Links</span>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-green-50 hover:bg-green-100 p-4 rounded-lg transition">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                            <i class="fa-solid fa-file-lines text-green-500"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Create Post</span>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-purple-50 hover:bg-purple-100 p-4 rounded-lg transition">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mb-2">
+                            <i class="fa-solid fa-gear text-purple-500"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700">Settings</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Community Stats (Hidden for empty state) -->
+            <div id="community-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 hidden">
+                <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Members</p>
+                            <p class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <i class="fa-solid fa-users text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Active Posts</p>
+                            <p class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <i class="fa-solid fa-file-lines text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Earnings</p>
+                            <p class="text-2xl font-bold text-gray-800">$0</p>
+                        </div>
+                        <i class="fa-solid fa-dollar-sign text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Referrals</p>
+                            <p class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <i class="fa-solid fa-user-plus text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Action Button (Mobile) -->
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 md:hidden">
+            </div></div></body></html>
