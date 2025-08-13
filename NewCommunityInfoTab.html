@@ -71,7 +71,7 @@
             <div class="p-4">
                 <div class="mb-4">
                     <a href="NewSalesRepDashboardHome.html">
-                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
                             <i class="fa-solid fa-chart-line mr-3"></i>
                             Dashboard
                         </div>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="mb-4">
                     <a href="NewCommunitiesTab.html">
-                        <div class="flex items-center py-2 text-gray-300 hover:text-white transition">
+                        <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
                             <i class="fa-solid fa-users mr-3"></i>
                             Communities
                         </div>
@@ -137,68 +137,96 @@
 
     <!-- Mobile Header -->
     <div id="mobile-header" class="md:hidden bg-dark text-white p-4 flex justify-between items-center">
-        <div class="flex items-center">
-            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
-                <i class="text-white" data-fa-i2svg=""><svg class="svg-inline--fa fa-p" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="p" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M0 96C0 60.7 28.7 32 64 32h96c88.4 0 160 71.6 160 160s-71.6 160-160 160H64v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V320 96zM64 288h96c53 0 96-43 96-96s-43-96-96-96H64V288z"></path></svg></i>
+        <a href="NewSalesRepDashboardHome.html">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                    <i class="fa-solid fa-p text-white"></i>
+                </div>
+                <div class="font-medium">Postersz</div>
             </div>
-            <div class="font-medium">Postersz</div>
-        </div>
+        </a>
         <div class="flex items-center">
             <button class="mr-4 relative">
-                <i data-fa-i2svg=""><svg class="svg-inline--fa fa-bell" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"></path></svg></i>
+                <i class="fa-solid fa-bell"></i>
                 <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
             </button>
-            <button id="mobile-menu-toggle" class="">
-                <i data-fa-i2svg=""><svg class="svg-inline--fa fa-bars" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path></svg></i>
+            <button id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu (hidden by default) -->
     <div id="mobile-menu" class="md:hidden bg-dark text-white fixed inset-0 z-50 hidden">
         <div class="p-4 flex justify-between items-center border-b border-gray-700">
             <div class="font-medium">Menu</div>
-            <button id="mobile-menu-close" class="">
-                <i data-fa-i2svg=""><svg class="svg-inline--fa fa-xmark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path></svg></i>
+            <button id="mobile-menu-close">
+                <i class="fa-solid fa-times"></i>
             </button>
         </div>
         <div class="p-4">
             <div class="mb-4">
-                <div class="flex items-center py-2 text-gray-300">
-                    <i class="mr-3" data-fa-i2svg=""><svg class="svg-inline--fa fa-chart-line" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chart-line" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"></path></svg></i>
-                    Dashboard
-                </div>
+                <a href="NewSalesRepDashboardHome.html">
+                    <div class="flex items-center py-2 text-gray-300">
+                        <i class="fa-solid fa-chart-line mr-3"></i>
+                        Dashboard
+                    </div>
+                </a>
             </div>
             <div class="mb-4">
-                <div class="flex items-center py-2 text-gray-300">
-                    <i class="mr-3" data-fa-i2svg=""><svg class="svg-inline--fa fa-user-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"></path></svg></i>
-                    Referrals
-                </div>
+                <a href="NewReferralActivityTab.html">
+                    <div class="flex items-center py-2 text-gray-300">
+                        <i class="fa-solid fa-user-plus mr-3"></i>
+                        Referrals
+                    </div>
+                </a>
             </div>
             <div class="mb-4">
-                <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
-                    <i class="mr-3" data-fa-i2svg=""><svg class="svg-inline--fa fa-users" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="users" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"></path></svg></i>
-                    Communities
-                </div>
+                <a href="NewCommunitiesTab.html">
+                    <div class="flex items-center py-2 text-white bg-primary bg-opacity-20 rounded-md px-3">
+                        <i class="fa-solid fa-users mr-3"></i>
+                        Communities
+                    </div>
+                </a>
             </div>
             <div class="mb-4">
-                <div class="flex items-center py-2 text-gray-300">
-                    <i class="mr-3" data-fa-i2svg=""><svg class="svg-inline--fa fa-link" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="link" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg></i>
-                    Invite Links
-                </div>
+                <a href="NewInviteLinkGeneratorTab.html">
+                    <div class="flex items-center py-2 text-gray-300">
+                        <i class="fa-solid fa-link mr-3"></i>
+                        Invite Links
+                    </div>
+                </a>
             </div>
             <div class="mb-4">
-                <div class="flex items-center py-2 text-gray-300">
-                    <i class="mr-3" data-fa-i2svg=""><svg class="svg-inline--fa fa-dollar-sign" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="dollar-sign" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32V67.7c1.6 .2 3.1 .4 4.7 .7c.4 .1 .7 .1 1.1 .2l48 8.8c17.4 3.2 28.9 19.9 25.7 37.2s-19.9 28.9-37.2 25.7l-47.5-8.7c-31.3-4.6-58.9-1.5-78.3 6.2s-27.2 18.3-29 28.1c-2 10.7-.5 16.7 1.2 20.4c1.8 3.9 5.5 8.3 12.8 13.2c16.3 10.7 41.3 17.7 73.7 26.3l2.9 .8c28.6 7.6 63.6 16.8 89.6 33.8c14.2 9.3 27.6 21.9 35.9 39.5c8.5 17.9 10.3 37.9 6.4 59.2c-6.9 38-33.1 63.4-65.6 76.7c-13.7 5.6-28.6 9.2-44.4 11V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.1c-.4-.1-.9-.1-1.3-.2l-.2 0 0 0c-24.4-3.8-64.5-14.3-91.5-26.3c-16.1-7.2-23.4-26.1-16.2-42.2s26.1-23.4 42.2-16.2c20.9 9.3 55.3 18.5 75.2 21.6c31.9 4.7 58.2 2 76-5.3c16.9-6.9 24.6-16.9 26.8-28.9c1.9-10.6 .4-16.7-1.3-20.4c-1.9-4-5.6-8.4-13-13.3c-16.4-10.7-41.5-17.7-74-26.3l-2.8-.7 0 0C119.4 279.3 84.4 270 58.4 253c-14.2-9.3-27.5-22-35.8-39.6c-8.4-17.9-10.1-37.9-6.1-59.2C23.7 116 52.3 91.2 84.8 78.3c13.3-5.3 27.9-8.9 43.2-11V32c0-17.7 14.3-32 32-32z"></path></svg></i>
-                    Earnings
-                </div>
+                <a href="NewEarningsCommissionsTab.html">
+                    <div class="flex items-center py-2 text-gray-300">
+                        <i class="fa-solid fa-dollar-sign mr-3"></i>
+                        Earnings
+                    </div>
+                </a>
             </div>
             <div class="mb-4">
-                <div class="flex items-center py-2 text-gray-300">
-                    <i class="mr-3" data-fa-i2svg=""><svg class="svg-inline--fa fa-gear" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gear" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"></path></svg></i>
-                    Settings
-                </div>
+                <a href="NewSalesRepProfile.html">
+                    <div class="flex items-center py-2 text-gray-300">
+                        <i class="fa-solid fa-gear mr-3"></i>
+                        Settings
+                    </div>
+                </a>
             </div>
+        </div>
+        <div class="p-4 border-t border-gray-700 mt-auto">
+            <a href="NewSalesRepProfile.html">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full mr-3" alt="User avatar">
+                    <div>
+                        <div class="font-medium">John Smith</div>
+                        <div class="text-gray-400 text-sm">Sales Representative</div>
+                    </div>
+                </div>
+            </a>
+            <a href="NewSalesRepLogin.html" class="w-full bg-gray-700 text-white py-2 rounded font-medium flex items-center justify-center">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
         </div>
     </div>
 
@@ -242,10 +270,10 @@
         <main id="community-detail-content" class="p-4 md:p-6">
             <!-- Back Link -->
             <div id="back-link" class="mb-6 hidden md:block">
-                <span class="flex items-center text-primary hover:underline cursor-pointer">
-                    <i class="mr-2" data-fa-i2svg=""><svg class="svg-inline--fa fa-arrow-left" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg></i>
+                <a href="NewCommunitiesTab.html" class="flex items-center text-primary hover:underline cursor-pointer">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
                     Back to Communities
-                </span>
+                </a>
             </div>
 
             <!-- Community Header -->
@@ -285,18 +313,18 @@
             <div id="community-tabs" class="bg-white rounded-lg shadow-sm border border-gray-100 mb-6">
                 <div class="border-b border-gray-200">
                     <div class="flex overflow-x-auto">
-                        <button id="members-tab" class="px-4 py-3 text-gray-500 hover:text-gray-700 whitespace-nowrap">
-                            Members List
-                        </button>
-                        <button id="ads-tab" class="px-4 py-3 text-gray-500 hover:text-gray-700 whitespace-nowrap">
+                        <a href="NewCommunitiesTab.html" class="px-4 py-3 text-gray-500 hover:text-gray-700">
+                            Members
+                        </a>
+                        <a href="NewAdsbyMembers.html" class="px-4 py-3 text-gray-500 hover:text-gray-700">
                             Ads by Members
-                        </button>
-                        <button id="info-tab" class="px-4 py-3 border-b-2 border-primary text-primary font-medium whitespace-nowrap">
+                        </a>
+                        <a href="NewCommunityInfoTab.html" class="px-4 py-3 text-primary font-medium border-b-2 border-primary">
                             Community Info
-                        </button>
-                        <button id="invite-tab" class="px-4 py-3 text-gray-500 hover:text-gray-700 whitespace-nowrap">
+                        </a>
+                        <a href="NewInviteHistoryTab.html" class="px-4 py-3 text-gray-500 hover:text-gray-700">
                             Invite History
-                        </button>
+                        </a>
                     </div>
                 </div>
 
